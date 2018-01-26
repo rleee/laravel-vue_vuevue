@@ -6,12 +6,24 @@
   </head>
   <body>
     
+    <div id="root">
+      <input type="text" id="input" v-model="message">
+
+      <p>The value of the input is: {{ message }}.</p>
+    </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script type="text/javascript">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript">
 
-  </script>
+      new Vue({
+      	el: '#root',
+      	data: {
+          message: 'Hello World'
+        }
+      });
+
+    </script>
 
 
 
