@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .purple-bg{
+            background: purple;
+        }
+        .blue-bg{
+            background: CornflowerBlue;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <button :disabled="isDisabled" :title="title" :class="{ 'purple-bg' : isLoading }" @click="dis">{{text}}</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            title: 'This is the title',
+            text: 'click to toggle class',
+            BGcol: 'purple-bg',
+            isClicked: true,
+            isLoading: false,
+            isDisabled: false
+        },
+        methods: {
+            dis(){
+                this.isDisabled = true;
+            },
+            toggle(){
+                this.isLoading = true;
+            },
+            toggleLogic(){
+                if(this.isClicked){
+                    this.BGcol = 'blue-bg';
+                    this.isClicked = false;
+                }else{
+                    this.BGcol = 'purple-bg';
+                    this.isClicked = true;
+                }
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html>
