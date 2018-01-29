@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VueCast</title>
+    <style>
+      button.completed{
+        background-color: lawngreen;
+      }
+      button.incompleted{
+        background-color: firebrick;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="root">
+      <h2>All task</h2>
+      <ul>
+        <li v-for="(task, key) in tasks">
+          <button
+            :class="{'completed': task.completed, 'incompleted': !task.completed}"
+            @click="markAs(key)">...</button>
+          {{task.description}}
+        </li>
+      </ul>
+        
+      
+
+      <h2>Incomplete task</h2>
+      <ul>
+        <li v-for="task in incompleteTasks">{{ task.description }}</li>
+      </ul>
+    
+      <h2>Complete Task</h2>
+      <ul>
+        <li v-for="task in completeTasks">{{ task.description }}</li>
+      </ul>
+
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+
+      new Vue({
+      	el: '#root',
+      	data: {
+          tasks: [
+            { description: 'Jalan-jalan sama mama', completed: false},
+            { description: 'Finish screen cast', completed: false},
+            { description: 'Make decision', completed: true},
+            { description: 'Master web developemnt', completed: false},
+            { description: 'Clean room', completed: true},
+          ]
+        },
+        methods:{
+          markAs(key){
+            return this.tasks[key].completed = this.tasks[key].completed ? false : true;
+            // return this.tasks[key].completed = !this.tasks[key].completed;
+          }
+        },
+        computed: {
+          incompleteTasks(){
+            return this.tasks.filter(task => ! task.completed);
+          },
+          completeTasks(){
+            return this.tasks.filter(task => task.completed);
+          }
+        }
+      });
+
+    </script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VueCast</title>
+  </head>
+  <body>
+
+    <div id="root">
+      <h2>All task</h2>
+      <ul>
+        <li v-for="task in tasks">
+          <input type="checkbox" v-model="task.completed">
+          {{task.description}}
+        </li>
+      </ul>
+        
+      
+
+      <h2>Incomplete task</h2>
+      <ul>
+        <li v-for="task in incompleteTasks" v-text="task.description"></li>
+      </ul>
+    
+      <h2>Complete Task</h2>
+      <ul>
+        <li v-for="task in completeTasks">{{ task.description }}</li>
+      </ul>
+
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+
+      new Vue({
+      	el: '#root',
+      	data: {
+          tasks: [
+            { description: 'Jalan-jalan sama mama', completed: false},
+            { description: 'Finish screen cast', completed: false},
+            { description: 'Make decision', completed: true},
+            { description: 'Master web developemnt', completed: false},
+            { description: 'Clean room', completed: true},
+          ]
+        },
+        computed: {
+          incompleteTasks(){
+            return this.tasks.filter(task => ! task.completed);
+          },
+          completeTasks(){
+            return this.tasks.filter(task => task.completed);
+          }
+        }
+      });
+
+    </script>
+
+
+
+
+  </body>
+</html>
