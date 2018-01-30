@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>VueCast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
+    <style>
+        .container {
+            width: 75%;
+            margin-top: 10%
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root" class="container">
+        <modal v-if="showModal" @close="showModal = false">
+            <p>Some text to pass on to modal's slot</p>
+        </modal>
+        <button @click="showModal = true">Show modal</button>
+
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script src="./10 - components exercise 2 modal.js"></script>
+
+
+
+
+</body>
+
+</html>
